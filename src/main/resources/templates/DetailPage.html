@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<link rel="stylesheet" href="DetailPage.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<header th:insert="LoggedNavbar.html"></header>
+<body>
+	<div class="container">
+		<div class="sub-container" th:each="L:${products}">
+			<img th:src="'/ProductImages/' + ${L.image}">
+			<p>[[${L.discription}]]</p>
+			<h1>[[${L.name}]]</h1>
+			<h3>[[${L.price}]]</h3>
+			<a th:href="@{/addtocart(id=${L.id}, page=${detailpage})}">ADD-TO-CART</a>
+			<!-- <a th:href="@{/removeproduct(id=${L.id})}">REMOVE</a> -->
+
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

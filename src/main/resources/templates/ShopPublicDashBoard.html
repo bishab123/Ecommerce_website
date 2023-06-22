@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+
+<link rel="stylesheet" href="ShopPublicDashBoard.css">
+<meta charset="UTF-8">
+<title>Shop Public Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<header th:insert="LoggedNavbar.html"> </header>
+<body>
+	<h2 style="text-align: center;">ShopInfo</h2>
+
+	<section class="shop-info" th:each="S:${shop}">
+		<div class="img">
+			<img class="image-animation" th:src="@{'/ShopImages/'+${S.shoplogo}}"
+				alt="">
+		</div>
+		<div class="detail">
+			<h1 class="name-animation">NAME: [[${S.shopname}]]</h1>
+			<h3 class="moto-animation">MOTO: [[${S.moto}]]</h3>
+			<h4 class="email-animation">SHOP-EMAIL: [[${S.shopemail}]]</h4>
+		</div>
+	</section>
+
+	<h1 style="text-align: center;">Featured Products</h1>
+	<div class="containers">
+
+		<div class="polaroid-stack" th:each="A:${List}">
+			<div class="polaroid">
+				<img th:src="@{'/ProductImages/' + ${A.image}}" alt="Product 1">
+
+				<h3>[[${A.name}]]</h3>
+				<p>[[${A.discription}]]</p>
+				<a style="color: red;" href=""> Shop_Now</a>
+			</div>
+
+
+		</div>
+	</div>
+
+	<div class="reviews-box">
+		<h2>Customer Reviews</h2>
+		<div class="review" th:each="R:${review}">
+			<div class="review-header">
+				<h3>[[${R.user.fname}]]</h3>
+				<span class="rating">[[${R.starcount}]]</span>
+			</div>
+			<p>[[${R.review}]]</p>
+		</div>
+		
+	</div>
+
+
+	<div class="latest-arrivals">
+		<h2>Latest Arrivals</h2>
+		<div class="product-grid">
+			<div class="product-card">
+				<img src="/images/bombbbbbb.jpg" alt="Product 1">
+				<h3>Product 1</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			</div>
+			<div class="product-card">
+				<img src="/images/bombbbbbb.jpg" alt="Product 2">
+				<h3>Product 2</h3>
+				<p>Ut eu ullamcorper nunc. Vestibulum ante ipsum primis in
+					faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="special-offer-box ribbon">
+		<span class="ribbon-text">Special Offer</span>
+		<h3>50% Off</h3>
+		<p>Limited time only!</p>
+	</div>
+
+
+	<div class="review-box">
+		<h3>Leave a Review</h3>
+		<form  th:each="S:${shop}" th:action="@{'/getreview'(shopid=${S.id})}" method="post" >
+			<div class="form-group">
+				<label for="name">Your Name:</label> <input type="text" id="name"
+					name="name" required>
+			</div>
+			<div class="form-group">
+				<label for="rating">Rating:</label> <select id="rating"
+					name="starcount" required>
+					<option value="" selected disabled>Select a rating</option>
+					<option value="5">5 Stars</option>
+					<option value="4">4 Stars</option>
+					<option value="3">3 Stars</option>
+					<option value="2">2 Stars</option>
+					<option value="1">1 Star</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="review">Your Review:</label>
+				<textarea id="review" name="review" required></textarea>
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+
+
+	<section class="social-media">
+		<!-- Social media integration -->
+		<h2>Connect with Us</h2>
+		<!-- Display social media feeds or links here -->
+	</section>
+
+	<section class="blog-news">
+		<!-- Blog or news section -->
+		<h2>Latest Blog Posts</h2>
+		<!-- Display recent blog posts or news articles here -->
+	</section>
+
+	<section class="customer-support">
+
+		<h2>Contact Us</h2>
+
+	</section>
+
+	<footer>
+		<!-- Footer content -->
+		<p>&copy; 2023 Shop Name. All rights reserved.</p>
+	</footer>
+</body>
+</html>

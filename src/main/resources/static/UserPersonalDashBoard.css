@@ -1,0 +1,272 @@
+.shippinginfobox {
+	width: 400px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	animation: fade-in 0.5s ease-out;
+	background-color: whitesmoke;
+	border-radius: 10px;
+}
+
+.field {
+	margin-bottom: 10px;
+}
+
+.field label {
+	display: inline-block;
+	width: 100px;
+	font-weight: bold;
+}
+
+.field input[type="text"] {
+	width: 250px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	transition: border-color 0.3s ease-out;
+}
+
+.field input[type="text"].editable {
+	border-color: #007bff;
+}
+
+.edit-btn {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 10px;
+	cursor: pointer;
+	color: #007bff;
+	text-decoration: none;
+	border: 1px solid #007bff;
+	border-radius: 4px;
+	padding: 4px 8px;
+	transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+.edit-btn:hover {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.edit-btn:active {
+	transform: translateY(1px);
+}
+
+.edit-btn:focus {
+	outline: none;
+}
+
+.user-image {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+/* CSS for small user image in top right */
+.small-user-image {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+/* CSS for dropdown */
+.dropdown {
+	position: relative;
+	display: inline-block;
+	left: 1300px;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 12px 16px;
+	text-decoration: none;
+	color: black;
+}
+
+.dropdown-content a {
+	color: black;
+	background-color: none;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* CSS for shipping and shop info boxes */
+.info-box {
+	width: 45%;
+	padding: 20px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+.info-box-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.container {
+	position: relative;
+	height: 700px;
+}
+
+.container1 {
+	width: 340px;
+	height: 305px;
+	position: absolute;
+	left: 600px;
+	background-color: steelblue;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	border-radius: 45px;
+	border: 2px solid black;
+	box-shadow: 0 0 4px rgb(0 0 0/ 90%);
+}
+
+.container1 h2 {
+	color: white;
+}
+
+.container2 {
+	position: absolute;
+	top: 270px;
+	margin: 32px 90px;
+	display: flex;
+	width: -webkit-fill-available;
+	justify-content: space-between;
+	display: flex;
+}
+
+.detailshop img {
+	margin-top: 1px; height : 43px;
+	width: 44px;
+	border-radius: 25px;
+	height: 43px;
+}
+
+.shopinfobox {
+	width: 400px;
+	background-color: lightblue;
+	border-radius: 23px;
+	border: 2px solid black;
+	box-shadow: 0 0 4px rgb(217 18 53/ 90%);
+	min-height: 365px;
+}
+
+.shopinfobox h2 {
+	text-align: center;
+}
+
+html {
+	background-color: mintcream;
+	overflow-x: hidden;
+}
+
+.breakdown {
+	position: relative;
+	/* left: 402px; */
+	width: fit-content;
+	left: 600px;
+}
+
+.container3 {
+	position: absolute;
+	width: -webkit-fill-available;
+	top: 755px;
+	background-color: lightsteelblue;
+	border-radius: 10px;
+	border: 2px solid black;
+	box-shadow: 0 0 4px rgb(217 18 53/ 90%);
+}
+
+.container3 h1 {
+	color: red;
+}
+
+.button {
+	height: 30px;
+	background-color: red;
+	display: block;
+	width: 120px;
+	border-radius: 14px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	color: white;
+	position: relative;
+	left: 70px;
+}
+
+header {
+	position: relative;
+	top: -8px;
+	left: -6px;
+}
+
+.rewards {
+	position: relative;
+	left: 1200px;
+}
+
+.Secondbutton {
+	height: 25px;
+	display: block;
+	background-color: red;
+	width: 100px;
+	border-radius: 15px;
+}
+
+.order img {
+	height: 40px;
+	width: 60px;
+	border-radius: 10px;
+}
+
+.container4 {
+	position: absolute;
+	top: 1110px;
+	width: -webkit-fill-available;
+	height: auto; min-height : 190px;
+	background-color: whitesmoke;
+	border-radius: 15px;
+	border: 2px solid black;
+	box-shadow: 0 0 4px rgb(0 0 0/ 90%);
+	min-height: 190px;
+}
+
+.imgbtn {
+	background-color: red;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 3px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+
+.recentorderbtn{
+	
+	color:black;
+	background-color: red;
+}
+

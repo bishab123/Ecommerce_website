@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<title>My eCommerce Website</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<header th:insert="Header.html"></header>
+<body>
+	<script type="text/javascript" src="style.js"></script>
+
+	<main>
+		<section class="banner">
+			<h1>Welcome to our eCommerce website!</h1>
+			<p>Find the best deals and discounts on our products!</p>
+			<a href="#" class="btns">Shop Now</a>
+		</section>
+		<div class="text">
+			<h1>Featured Products</h1>
+		</div>
+		<section class="products">
+
+			<div class="product">
+				<img src="/images/books.jpg">
+				<h2>books</h2>
+				<p>$20.00</p>
+				<a th:href="@{/addtocart(id=0)}" class="btn">Add to Cart</a>
+			</div>
+			<div class="product">
+				<img src="/images/clothes.jpg">
+				<h2>Clothes</h2>
+				<p>$30.00</p>
+				<a th:href="@{/addtocart(id=0)}" class="btn">Add to Cart</a>
+			</div>
+			<div class="product">
+				<img src="/images/ele.jpeg">
+				<h2>electronics</h2>
+				<p>$40.00</p>
+				<a th:href="@{/addtocart(id=0)}" class="btn">Add to Cart</a>
+			</div>
+
+
+		</section>
+
+		<section class="new-arrivals">
+			<div class="container">
+				<h2>New Arrivals</h2>
+				<div class="productss">
+					<div class="product-item">
+						<img src="/images/clothes.jpg" alt="Product 1">
+						<h4>Product 1</h4>
+						<p>$29.99</p>
+						<a th:href="@{/addtocart(id=0)}" class="btnn">Buy Now</a>
+					</div>
+					<div class="product-item">
+						<img src="/images/books.jpg" alt="Product 2">
+						<h4>Product 2</h4>
+						<p>$39.99</p>
+						<a th:href="@{/addtocart(id=0)}" class="btnn">Buy Now</a>
+					</div>
+					<div class="product-item">
+						<img src="/images/ele.jpeg" alt="Product 3">
+						<h4>Product 3</h4>
+						<p>$49.99</p>
+						<a th:href="@{/addtocart(id=0)}" class="btnn">Buy Now</a>
+					</div>
+					<div class="product-item">
+						<img src="/images/clothes.jpg" alt="Product 4">
+						<h4>Product 4</h4>
+						<p>$59.99</p>
+						<a th:href="@{/addtocart(id=0)}" class="btnn">Buy Now</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	</main>
+
+	
+</body>
+<footer th:insert="Footer.html">
+		
+	</footer>
+</html>

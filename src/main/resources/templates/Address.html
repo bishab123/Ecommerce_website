@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<link rel="stylesheet" href="Address.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<h3>SHIPPING INFO</h3>
+		<form th:object="${userinfo}" action="/editdetails" method="get"
+			id="shipping-form">
+			<div class="field">
+				<label for="name">Name:</label> <input type="text" id="name"
+					readonly required name="fname" th:field="*{fname}">
+			</div>
+			<div class="field">
+				<label for="address">Address:</label> <input type="text"
+					id="address" readonly required name="address" th:field="*{address}">
+			</div>
+			<div class="field">
+				<label for="contact">Contact No:</label> <input type="text"
+					id="contact" readonly required name="number" th:field="*{number}">
+			</div>
+			<div class="field">
+				<label for="email">Email:</label> <input type="text" id="email"
+					readonly required name="email" th:field="*{email}">
+			</div>
+			<input type="hidden" th:field="*{id}" name="id"> <input
+				type="hidden" th:field="*{lname}" name="lname"> <input
+				type="hidden" th:field="*{username}" name="username"> <input
+				type="hidden" th:field="*{password}" name="password"> <input
+				type="button" class="edit-btn" value="Edit"> <input
+				type="submit" class="edit-btn" value="Save" style="display: none;">
+		</form>
+
+		<div class="payment-options">
+			<label>Payment Option:</label>
+			<div>
+				<input type="checkbox" id="cashOnDelivery" checked disabled>
+				<span>Cash on Delivery</span>
+			</div>
+			<div>
+				<input type="checkbox" id="esewa" disabled> <span>Esewa</span>
+			</div>
+			<div>
+				<input type="checkbox" id="card" disabled> <span>Card</span>
+			</div>
+			<div>
+				<input type="checkbox" id="mobileBanking" disabled> <span>Mobile
+					Banking</span>
+			</div>
+		</div>
+
+		<a href="/checkout"><button class="confirm-btn">Confirm
+				Order</button></a>
+				
+				 <a href="/cart">
+			<button class="confirm-btn">BACK</button>
+		</a>
+		<div class="error-message" id="error-message"></div>
+	</div>
+
+	<div class="your-order">
+		<h2>Your Order</h2>
+		<div class="product" th:each="C:${orderproducts}">
+			<div class="product-image">
+				<img th:src="'/ProductImages/' + ${C.image}" alt="Product Image">
+			</div>
+			<div class="product-details">
+				<span class="product-name">[[${C.name}]]</span>
+			</div>
+		</div>
+		<div class="order-total">
+			<span class="total-label">Total Amount:</span> <span
+				class="total-amount">$50.00</span>
+		</div>
+	</div>
+
+	<script>
+		// Function to toggle the edit mode for a field
+		function toggleEdit() {
+			var form = document.getElementById('shipping-form');
+			var inputFields = form.querySelectorAll('input[readonly]');
+			var isReadOnly = inputFields[0].readOnly;
+
+			if (isReadOnly) {
+				// Enable editing
+				inputFields.forEach(function(field) {
+					field.readOnly = false;
+					field.classList.add('editable');
+				});
+
+				var editBtn = document.querySelector('.edit-btn');
+				editBtn.value = 'Save';
+				form.querySelector('[type="submit"]').style.display = 'inline-block';
+				form.querySelector('[type="button"]').style.display = 'none';
+			} else {
+				// Disable editing
+				inputFields.forEach(function(field) {
+					field.readOnly = true;
+					field.classList.remove('editable');
+				});
+
+				var editBtn = document.querySelector('.edit-btn');
+				editBtn.value = 'Edit';
+				form.querySelector('[type="submit"]').style.display = 'none';
+			}
+		}
+
+		var editBtn = document.querySelector('.edit-btn');
+		editBtn.addEventListener('click', function(event) {
+			event.preventDefault();
+			toggleEdit();
+		});
+
+		var confirmBtn = document.querySelector('.confirm-btn');
+		confirmBtn.addEventListener('click', function(event) {
+			var errorDiv = document.getElementById('error-message');
+			var requiredFields = document.querySelectorAll('input[required]');
+			var hasEmptyFields = false;
+
+			requiredFields.forEach(function(field) {
+				if (!field.value) {
+					hasEmptyFields = true;
+					field.classList.add('error');
+				} else {
+					field.classList.remove('error');
+				}
+			});
+
+			if (hasEmptyFields) {
+				errorDiv.innerText = 'Please fill in all the required fields.';
+			} else {
+				errorDiv.innerText = '';
+				confirmBtn.classList.add('pulse-animation');
+				setTimeout(function() {
+					confirmBtn.classList.remove('pulse-animation');
+				}, 2000);
+			}
+
+			
+		});
+	</script>
+</body>
+</html>

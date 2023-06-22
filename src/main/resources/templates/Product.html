@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+
+<head>
+<link rel="stylesheet" href="Product.css">
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+
+</head>
+<header th:insert="LoggedNavbar.html"></header>
+<body>
+	<div class="dropdown">
+		<button class="dropbtn">Shop By Category</button>
+		<div class="dropdown-content">
+			<a th:href="@{/men(catagory=mens)}">Mens</a><a
+				th:href="@{/electronics(catagory=electronics)}">Electronics</a> <a
+				th:href="@{/womens(catagory=womens)}">Womens</a> <a
+				th:href="@{/new-arrivals(catagory=new-arrivals)}">New Arrivals</a> <a
+				th:href="@{/sales(catagory=sales)}">Sales</a> <a
+				th:href="@{/winter(catagory=winter)}">Winter</a> <a
+				th:href="@{/summer(catagory=summer)}">Summer</a>
+		</div>
+	</div>
+
+	<div class="search-container">
+		<form action="/search" method="get">
+			<input type="text" name="query" placeholder="Search..."
+				class="search-input">
+			<button type="submit" class="search-button">Search</button>
+		</form>
+	</div>
+
+
+	<div id="name">
+		<p>Welcome to the product page. Plz select any catagory to load
+			the products you are searching for..</p>
+	</div>
+
+
+	<div class="container">
+		<div class="sub-container" th:each="L:${list}">
+			<img th:src="'/ProductImages/' + ${L.image}">
+			<p>[[${L.discription}]]</p>
+			<h1>[[${L.name}]]</h1>
+			<h3>[[${L.price}]]</h3>
+			<div class="smallimage">
+				<img th:src="'/ShopImages/' + ${L.shop.shoplogo}"> <a
+					th:href="@{/ShopPublicDashBoard(shopid=${L.shop.id}) }">
+					<h3>[[${L.shop.shopname}]]</h3>
+				</a>
+			</div>
+			<a class="btnn"
+				th:href="@{/addtocart(id=${L.id}, shopid=${L.shop.id})}">ADD-TO-CART</a>
+
+
+
+
+		</div>
+
+	</div>
+
+
+	<script>
+		Document.getElementById("name")
+	</script>
+</body>
+</html>

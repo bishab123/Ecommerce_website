@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<link rel="stylesheet" href="ShopLogin.css">
+<title>Insert title here</title>
+</head>
+<header th:insert="MyshopNavbar.html"></header>
+<body>
+	<form action="/logintoshop" method="post">
+		<div class="box">
+			<input type="text" placeholder="Enter ShopUserName" name="shopusername"> <input
+				type="text" placeholder="Enter shopCode" name="shopcode">
+
+			<div class="btn">
+				<input type="submit" name="submit">
+
+			</div>
+		</div>
+
+	</form>
+</body>
+</html>

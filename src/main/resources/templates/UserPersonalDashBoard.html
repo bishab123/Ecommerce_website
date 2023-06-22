@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<link rel="stylesheet" href="UserPersonalDashBoard.css">
+<title>User Dashboard</title>
+
+</head>
+
+<header th:insert="loggednavbar.html"> </header>
+<body>
+	<!-- Top part -->
+	<div class="container">
+		<div class="container1" th:each="D:${userinfo}">
+			<img src="/images/bombbbbbb.jpg" alt="User Image" class="user-image">
+			<h2>[[${D.getFname}]]</h2>
+			<input type="file" name="image-upload">
+		</div>
+		<div class="dropdown">
+			<img src="/images/bombbbbbb.jpg" alt="Small User Image"
+				class="small-user-image">
+			<h3>User-Settings</h3>
+			<div class="dropdown-content">
+				<a href="#">My Orders</a> <a href="#">Payment</a> <a href="#">Subscriptions</a>
+			</div>
+		</div>
+
+
+
+		<div class="container2">
+
+			<div class="shippinginfobox">
+				<h2>Shipping-info</h2>
+				<form th:object="${userinfo}" action="/editdetails" method="get"
+					id="shipping-form">
+					<div class="field">
+						<label for="name">Name:</label> <input type="text" id="name"
+							readonly required name="fname" th:field="*{fname}">
+					</div>
+					<div class="field">
+						<label for="address">Address:</label> <input type="text"
+							id="address" readonly required name="address"
+							th:field="*{address}">
+					</div>
+					<div class="field">
+						<label for="contact">Contact No:</label> <input type="text"
+							id="contact" readonly required name="number" th:field="*{number}">
+					</div>
+					<div class="field">
+						<label for="email">Email:</label> <input type="text" id="email"
+							readonly required name="email" th:field="*{email}">
+					</div>
+					<input type="hidden" th:field="*{id}" name="id"> <input
+						type="hidden" th:field="*{lname}" name="lname"> <input
+						type="hidden" th:field="*{username}" name="username"> <input
+						type="hidden" th:field="*{password}" name="password"> <input
+						type="button" class="edit-btn" value="Edit"> <input
+						type="submit" class="edit-btn" value="Save" style="display: none;">
+				</form>
+			</div>
+			<div class="shopinfobox">
+				<h2 class="info-box-title">Top Shop Info</h2>
+				<div class="detailshop" th:each="A : ${fetchshop}">
+					<img th:src="'/ShopImages/'+${A.myShop.shoplogo}" alt="Shop Image">>>>>>>>>>>>>>>>>>>>>
+					<a class="imgbtn" href="">Peek</a>
+					<h3 th:text="${A.myShop.shopname}">Shop Name</h3>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container3">
+		<h1>REWARDS</h1>
+
+		<h2>Total Accumulated points:[[${total}]]</h2>
+		<div class="breakdown">
+			<h2>Wanna see points breakdown??</h2>
+			<a class="button" href="/distributepointbyshop">Click Me</a>
+		</div>
+
+		<div class="rewards">
+			<h2>Redeem your points</h2>
+			<a class="Secondbutton" href="">Redeem-Now</a>
+		</div>
+	</div>
+
+
+	<div class="container4">
+		<h1>RECENTS ORDER</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Product_img</th>
+					<th>Shop-Name</th>
+					<th>Product-detail</th>
+					<th>Product-detail</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="A: ${orderList}">
+					<td><img th:src="@{'/ProductImages/' + ${A.image}}"></td>
+
+					<td><h3>[[${A.shop.shopname}]]</h3></td>
+					<td>
+						<h1>[[${A.name}]]</h1>
+						<h2 style="color: red;">Price: [[${A.price}]]</h2>
+
+
+					</td>
+					<td><a class="recentorderbtn" href="">Product_detail</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+	<script>
+		// Function to toggle the edit mode for a field
+		function toggleEdit() {
+			var form = document.getElementById('shipping-form');
+			var inputFields = form.querySelectorAll('input[readonly]');
+			var isReadOnly = inputFields[0].readOnly;
+
+			if (isReadOnly) {
+				// Enable editing
+				inputFields.forEach(function(field) {
+					field.readOnly = false;
+					field.classList.add('editable');
+				});
+
+				var editBtn = document.querySelector('.edit-btn');
+				editBtn.value = 'Save';
+				form.querySelector('[type="submit"]').style.display = 'inline-block';
+				form.querySelector('[type="button"]').style.display = 'none';
+			} else {
+				// Disable editing
+				inputFields.forEach(function(field) {
+					field.readOnly = true;
+					field.classList.remove('editable');
+				});
+
+				var editBtn = document.querySelector('.edit-btn');
+				editBtn.value = 'Edit';
+				form.querySelector('[type="submit"]').style.display = 'none';
+			}
+		}
+
+		var editBtn = document.querySelector('.edit-btn');
+		editBtn.addEventListener('click', function(event) {
+			event.preventDefault();
+			toggleEdit();
+		});
+	</script>
+</body>
+</html>

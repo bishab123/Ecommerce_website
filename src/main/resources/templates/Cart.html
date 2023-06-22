@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="Cart.css">
+<title>Insert title here</title>
+</head>
+<header th:insert="LoggedNavbar.html"></header>
+<body>
+	<h1>Shopping Cart</h1>
+
+	<div class="shopping-cart">
+
+		<div class="column-labels">
+			<label class="product-image">Image</label> <label
+				class="product-details">Product</label> <label class="product-price">Price</label>
+			<label class="product-quantity">Quantity</label> <label
+				class="product-removal">Remove</label> <label
+				class="product-line-price">Total</label>
+		</div>
+
+		<div class="product" th:each="A:${list}">
+			<div class="product-image">
+				<img th:src="'/ProductImages/' + ${A.image}">
+			</div>
+			<div class="product-details">
+				<div class="product-title">[[${A.name}]]</div>
+				<p class="product-description">[[${A.discription}]]</p>
+			</div>
+			<div class="product-price">[[${A.price}]]</div>
+			<div class="product-quantity">
+				<input type="number" value="1" min="1" onchange="calculateTotal()">
+			</div>
+			<div class="product-removal">
+				<div class="remove-product">
+					<a th:href="@{/remove(id=${A.id})}">Remove</a>
+				</div>
+			</div>
+			<div class="product-line-price">[[${A.price}]]</div>
+		</div>
+
+
+
+		<div class="totals">
+			<div class="totals-item">
+				<label>Subtotal</label>
+				<div class="totals-value" id="cart-subtotal"></div>
+			</div>
+			<div class="totals-item">
+
+				<label>Tax (5%)</label>
+				<div class="totals-value" id="cart-tax"></div>
+			</div>
+			<div class="totals-item">
+				<label>Shipping</label>
+				<div class="totals-value" id="cart-shipping"></div>
+			</div>
+			<div class="totals-item totals-item-total">
+				<label>Grand Total</label>
+
+
+
+
+
+
+
+
+				<div class="totals-value" id="cart-total">calculating..</div>
+			</div>
+		</div>
+
+		<a href="/proceedtocheckout" class="checkout">PROCEED</a> <a
+			href="/detailedorderinfo" class="order"> Order History</a>
+
+	</div>
+
+
+	<script>
+		// Function to calculate the total price
+		function calculateTotal() {
+			var products = document.getElementsByClassName("product");
+			var totalPrice = 0;
+
+			for (var i = 0; i < products.length; i++) {
+				var priceElement = products[i]
+						.getElementsByClassName("product-price")[0];
+				var quantityElement = products[i]
+						.getElementsByClassName("product-quantity")[0]
+						.getElementsByTagName("input")[0];
+
+				var price = parseFloat(priceElement.textContent);
+				var quantity = parseInt(quantityElement.value);
+
+				var linePrice = price * quantity;
+				totalPrice += linePrice;
+			}
+
+			var grandTotalElement = document.getElementById("cart-total");
+			grandTotalElement.textContent = totalPrice.toFixed(2);
+		}
+
+		// Call the calculateTotal function initially
+		calculateTotal();
+	</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<link rel="stylesheet" href="MyShopDashBoard.css">
+<title>Insert title here</title>
+</head>
+<header th:insert="MyShopNavbar.html"></header>
+<body>
+
+	<div class="userdetails" th:each="A:${shop}">
+
+		<img th:src="'/ShopImages/'+${A.shoplogo}" alt="product.1">
+
+		<h1>[[${A.shopname}]]</h1>
+		<h2>address</h2>
+		<div class="count">
+			<h5>FOLLOWERS:33</h5>
+			<h5>FOLLOWING:40</h5>
+		</div>
+
+	</div>
+
+	<div class="overview">
+		<h1>Total sales: $40000</h1>
+		<h1>total visits: 121032</h1>
+
+		<img src="/images/ecommerce1.png" alt="graph.img">
+	</div>
+
+
+	<div class="names">
+		<h2>FEATURED_PRODUCTS</h2>
+		<a href="/manageorder">MANAGE</a>
+	</div>
+	<div class="featured-products">
+
+		<div class="box" th:each="A:${products}">
+			<img th:src="'/productimages/'+${A.image}" alt="hello">
+			<h2>sold: 200</h2>
+		</div>
+	</div>
+
+	<div class="customer-info">
+		<h2>MOST ACTIVE USERS</h2>
+		<div class="individual" th:each="B:${users}">
+			<img src="/images/sampleuser.avif" alt="">
+			<h3>[[${B.username}]]</h3>
+
+		</div>
+	</div>
+	<div class="featured-tags">
+		<h1>Features tags</h1>
+
+		<div class="tags">
+			<a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a>
+			<a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a>
+			<a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a> <a>mens</a>
+
+		</div>
+	</div>
+           <div class="btn">
+	<button onclick="openPopup()">EDIT</button>
+</div>
+	<div id="popup" class="popup">
+		<div class="popup-content">
+			<form action="/editShopInfo" method="post"
+				enctype="multipart/form-data" th:object="${shop}">
+				<input type="text" placeholder="shopname" th:field="*{shopname}"
+					name="shopname"> <input type="text"
+					placeholder="shop-email" th:field="*{shopemail}" name="shopemail">
+				<input type="file" name="image"> <input type="text"
+					placeholder="shop-moto" th:field="*{moto}" name="moto">
+					<input type="hidden" th:field="*{id}">
+					<input type="hidden" th:field="*{shopusername}">
+					<input type="hidden" th:field="*{shoppassword}">
+					<input type="hidden" th:field="*{shopcode}">
+				<input type="submit" name="submit">
+			</form>
+			<button onclick="closePopup()">Close</button>
+		</div>
+	</div>
+
+
+	<script>
+		function openPopup() {
+			var popup = document.getElementById("popup");
+			popup.style.display = "block";
+		}
+
+		function closePopup() {
+			var popup = document.getElementById("popup");
+			popup.style.display = "none";
+		}
+	</script>
+
+
+</body>
+</html>

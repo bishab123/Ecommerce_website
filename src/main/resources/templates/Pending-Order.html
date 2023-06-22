@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="your-order">
+		<h2>Your Order</h2>
+		<div class="product" th:each="C:${orderproducts}">
+			<div class="product-image">
+				<img th:src="'/ProductImages/' + ${C.image}" alt="Product Image">
+
+				<h1>[[${C.name}]]</h1>
+
+				<h3>[[${C.price}]]</h3>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

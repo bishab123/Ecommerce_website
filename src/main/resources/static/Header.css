@@ -1,0 +1,37 @@
+/* Reset default styles */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Header */
+.header {
+	background: rgb(38, 169, 206);
+	background: linear-gradient(247deg, rgba(38, 169, 206, 1) 38%,
+		rgba(152, 28, 89, 1) 48%, rgba(0, 0, 0, 1) 74%);
+	padding: 1rem;
+	position: fixed;
+	width: -webkit-fill-available;
+	z-index:9999;
+}
+
+nav ul {
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+nav a {
+	font-family: Georgia;
+	color: white;
+	text-decoration: none;
+	padding: 1rem;
+	font-size: 19px;
+}
+
+nav a:hover {
+	border-radius: 10px;
+	background-color: #00bfff;
+	color: #333;
+	background-color: #00bfff;
+}

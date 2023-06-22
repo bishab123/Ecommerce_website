@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+
+
+<link rel="stylesheet" href="ProductManagement.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<header th:insert="~{MyShopNavbar.html}"></header>
+<body>
+	<h1>Welcome to the product management page</h1>
+
+	<div class="container">
+		<div class="sub-container" th:each="L:${products}">
+			<img th:src="'/ProductImages/' + ${L.image}">
+			<p>[[${L.discription}]]</p>
+			<h1>[[${L.name}]]</h1>
+			<h3>[[${L.price}]]</h3>
+
+			<a class="btnn" th:href="@{/removed(id=${L.id})}">REMOVE</a> <a
+				class="btnn" th:href="@{/edit(id=${L.id})}">Edit</a>
+
+
+		</div>
+
+	</div>
+
+</body>
+</html>

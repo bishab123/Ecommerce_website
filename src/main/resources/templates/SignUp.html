@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<link rel="stylesheet" href="signup.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<header th:insert="Header.html"></header>
+<body>
+<div id="login-box">
+  <div class="left">
+  <h3>[[${message}]]</h3>
+    <h1>Sign up</h1>
+    <form action="/signup" method="post">
+    <input type="text" name="fname" placeholder="First-name" />
+    <input type="text" name="lname" placeholder="last-name" />
+    <input type="text" name="username" placeholder="Username" />
+    <input type="text" name="email" placeholder="E-mail" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="password" name="password2" placeholder="Retype password" />
+    
+    <input type="submit" name="signup_submit" value="Sign me up" />
+    </form>
+  </div>
+  
+  
+  <div class="right">
+    <span class="loginwith">Sign in with<br />social network</span>
+    
+    <button class="social-signin facebook">Log in with facebook</button>
+    <button class="social-signin twitter">Log in with Twitter</button>
+    <button class="social-signin google">Log in with Google+</button>
+  </div>
+  <div class="or">OR</div>
+</div>
+</body>
+</html>

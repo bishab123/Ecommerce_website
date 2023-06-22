@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Order Received</title>
+
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+img {
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.btn {
+	background-color: black;
+}
+</style>
+</head>
+
+<header th:insert="MyShopNavbar.html"> </header>
+<body>
+	<h1>Order Received</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>User LastName</th>
+				<th>User email</th>
+				<th>User Name</th>
+				<th>Image</th>
+				<th>Confirmation</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="entry : ${orderreceived.entries()}">
+				<td th:text="${entry.key.name}"></td>
+				<td th:text="${entry.value.lname}"></td>
+				<td th:text="${entry.value.email}"></td>
+				<td th:text="${entry.value.fname}"></td>
+				<td><img th:src="@{'/ProductImages/' + ${entry.key.image}}"
+					alt="Product Image" width="100" height="100" /></td>
+				<td><a class="btn"
+					th:href="@{/confirmedorder(userid=${entry.value.id}, id=${entry.key.id}) }">Confirm-Order</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

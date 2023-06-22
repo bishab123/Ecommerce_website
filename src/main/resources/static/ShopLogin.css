@@ -1,0 +1,47 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+
+.box{
+	display:flex;
+	flex-direction: column;
+	position:relative;
+	top:100px;
+	width:fit-content;
+	
+	left:130px;
+}
+
+
+form{
+	
+	height:300px;
+	width:450px;
+	border-radius:10px;
+	position:relative;
+	top:220px;
+	left:490px;
+	background-color: gray;
+}
+
+
+.btn input{
+	background-color:red;
+	color:white;
+	width:90px;
+	margin-top:25px;
+	border-radius:5px;
+}
+
+form input{
+	margin-top:10px;
+	padding:10px;
+	border-radius:5px;
+}
+
+
+html{
+	background-color: whitesmoke;
+}

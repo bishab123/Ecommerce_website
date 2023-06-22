@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.buttons {
+	display: flex;
+	background-color: steelblue;
+	padding: 70px;
+	width: fit-content;
+	/* margin-left: 129px; */
+	position: relative;
+	top: 217px;
+	left: 439px;
+}
+
+.buttons a {
+	background-color: red;
+	margin: 3px;
+	padding:20px;
+}
+
+html {
+	background-color: skyblue;
+	background-image: url("/images/online store.jpg");
+	background-blend-mode: luminosity;
+}

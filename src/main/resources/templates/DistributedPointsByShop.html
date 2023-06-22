@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+
+<link rel="stylesheet" href="DistributedPointsByShop.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<header th:insert="LoggedNavbar.html"></header>
+<body>
+
+<a  class="back" href="/loaddashboard"> BACK</a>
+	<div class="container">
+		<div class="subcontainer" th:each="A:${List}">
+
+              <img th:src="'/ShopImages/'+${A.product.shop.shoplogo}">
+			<h1>[[${A.product.shop.shopname}]]</h1>
+			<h2 style="color:red;">Points accumulated: [[${A.gainedpointsbyshop}]]</h2>
+			
+			<a th:href="@{/pointscalculate(id=${A.product.shop.id})}">detail-info</a>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

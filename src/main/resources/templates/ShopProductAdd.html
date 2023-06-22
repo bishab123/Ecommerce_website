@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="Shop.css">
+<title>Insert title here</title>
+
+</head>
+
+<header th:insert="MyShopNavbar.html"></header>
+
+<body>
+
+	<div class="form-container">
+  <form th:action="@{/addproducts(str='shop') }" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="price" placeholder="Price">
+    <input type="text" name="discription" placeholder="Description">
+    <input type="file" name="profile">
+    <select name="productcatagory" class="form-control">
+      <option value="">Select Category</option>
+      <option th:each="d : ${catagory}" th:value="${d.id}">[[${d.catagoryname}]]</option>
+    </select>
+    <input type="submit" name="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>

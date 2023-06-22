@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<link rel="stylesheet" href="ShopSignUp.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+
+<header th:insert="LoggedNavbar.html"></header>
+
+
+<body>
+	<h1>[[${exist}]]</h1>
+	<h1>Unique code for login:[[${uniquecode}]]</h1>
+	<form action="/signupshop" method="post" enctype="Multipart/form-data">
+		<input type="text" placeholder="shopname" name="shopname"> <input
+			type="text" placeholder="shop-email" name="shopemail"> <input
+			type="file" name="image"> <input type="text"
+			placeholder="shop-moto" name="moto"> <input type="text"
+			placeholder="shop-username" name="shopusername"> <input
+			type="text" placeholder="shop-password" name="shoppassword">
+		<input type="text" placeholder="shop-repassword"> <input
+			type="submit" name="submit">
+
+	</form>
+</body>
+</html>

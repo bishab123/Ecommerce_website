@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="@{/addproducts(str='product')}" method="post" enctype="Multipart/form-data">
+		<input type="text" name="name" placeholder="name"> <input type="text"
+			name="price" placeholder="price"> <input type="text" name="discription" placeholder="description"> 
+		<input type="file" name="profile"> <select name="productcatagory"
+			class="form-control">
+			<option value="">select
+			<option />
+			<option th:each="d : ${catagory}" th:value="${d.id}">[[${d.catagoryname}]]</option>
+		</select>
+
+     <input type="submit" name="submit">
+
+	</form>
+
+
+
+</body>
+</html>

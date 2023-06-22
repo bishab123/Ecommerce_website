@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<h1>Welcome to the product detail page</h1>
+
+
+	<div class="container">
+		<div class="subcontainer">
+			<div class="imagecontainer">
+				<img src="" alt="product.123">
+
+			</div>
+
+			<div class="detailcontainer">
+				<span>NAME</span>
+				<h2>PRODUCT_NAME</h2>
+				<span>DISCRIPTION</span>
+				<h3>Discription</h3>
+
+				<select>
+					<option>Red</option>
+					<option>black</option>
+					<option>blue</option>
+					<option>pink</option>
+				</select> <a href="">SHOP NOW</a>
+			</div>
+
+
+
+
+
+		</div>
+
+		<div class="descriptioncontainer">
+			<p>description are as follows</p>
+		</div>
+
+
+
+		<div class="reviewbox">
+			<h2>Customer Reviews</h2>
+			<div class="review" th:each="R:${review}">
+				<div class="review-header">
+					<h3>[[${R.user.fname}]]</h3>
+					<span class="rating">[[${R.starcount}]]</span>
+				</div>
+				<p>[[${R.review}]]</p>
+			</div>
+
+
+		</div>
+
+		<div class="review-box">
+			<h3>Leave a Review</h3>
+			<form th:each="S:${shop}" th:action="@{'/getreview'(shopid=${S.id})}"
+				method="post">
+				<div class="form-group">
+					<label for="name">Your Name:</label> <input type="text" id="name"
+						name="name" required>
+				</div>
+				<div class="form-group">
+					<label for="rating">Rating:</label> <select id="rating"
+						name="starcount" required>
+						<option value="" selected disabled>Select a rating</option>
+						<option value="5">5 Stars</option>
+						<option value="4">4 Stars</option>
+						<option value="3">3 Stars</option>
+						<option value="2">2 Stars</option>
+						<option value="1">1 Star</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="review">Your Review:</label>
+					<textarea id="review" name="review" required></textarea>
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+
+
+	</div>
+</body>
+</html>

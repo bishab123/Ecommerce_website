@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="www.themeleaf.org">
+<head>
+
+<link rel="stylesheet" href="DistributedPoints.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<header th:insert="LoggedNavbar.html"></header>
+<body>
+
+
+<a  class="back" href="/distributepointbyshop"> BACK</a>
+
+
+<table>
+		<thead>
+			<tr>
+				<th>Task-Preformed</th>
+				<th>Accumulated-Points</th>
+				<th>Product-detail</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+		          <tr th:each="A:${detail}">
+		          <td>[[${A.description}]]</td>
+		          <td>[[${A.gainedpoints}]]</td>
+		          <td>[[${A.product.name}]]</td>
+		          
+		          
+		          </tr>
+		</tbody>
+		
+		
+		
+		</table>
+</body>
+</html>
